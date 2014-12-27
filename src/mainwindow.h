@@ -35,6 +35,8 @@ private slots:
 
 	void on_radioBtnPan_clicked(bool checked);
 
+	void on_btnResetZoom_clicked();
+
 private:
 	Ui::MainWindow *ui;
 	QColor pointColor;

@@ -120,3 +120,8 @@ void MainWindow::on_radioBtnPan_clicked(bool checked)
 		ui->graphicsView->setPlotDragMode(PlotView::PanMode);
 	}
 }
+
+void MainWindow::on_btnResetZoom_clicked()
+{
+	ui->graphicsView->fitInContent();
+}
