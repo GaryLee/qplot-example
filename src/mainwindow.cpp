@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->radiusLabel->setText(QString("Radius(%1)").arg(ui->radiusSlider->value()));
 	this->pointColor = QColor(Qt::red);
 	this->setColorButton(this->pointColor);
+
 	qDebug() << "Main window inited." << endl;
 }
 
@@ -29,7 +30,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
-	this->fitContent();
+	if (ui->chkBoxAutoResize->isChecked()) {
+		ui->graphicsView->fitInContent();
+	}
 	QMainWindow::resizeEvent(event);
 	this->statusBar()->showMessage(
 				QString("window size: (%1, %2); view size: (%3, %4)")
@@ -51,12 +54,6 @@ void MainWindow::showEvent(QShowEvent *event)
 	QMainWindow::showEvent(event);
 }
 
-void MainWindow::fitContent()
-{
-	const double margin = 10.0;
-	QRectF itemsBoundingRect = ui->graphicsView->scene()->itemsBoundingRect().adjusted(-margin, -margin, margin, margin);
-	ui->graphicsView->fitInView(itemsBoundingRect, Qt::KeepAspectRatio);
-}
 
 void MainWindow::setColorButton(const QColor &color)
 {
@@ -107,4 +104,19 @@ void MainWindow::on_btnColor_clicked()
 {
 	this->pointColor = QColorDialog::getColor(this->pointColor);
 	this->setColorButton(this->pointColor);
+}
+
+void MainWindow::on_radioBtnZoom_clicked(bool checked)
+{
+	if (checked) {
+		ui->graphicsView->setPlotDragMode(PlotView::ZoomMode);
+		ui->chkBoxAutoResize->setChecked(false);
+	}
+}
+
+void MainWindow::on_radioBtnPan_clicked(bool checked)
+{
+	if (checked) {
+		ui->graphicsView->setPlotDragMode(PlotView::PanMode);
+	}
 }

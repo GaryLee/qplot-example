@@ -76,9 +76,59 @@
      </layout>
     </item>
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QCheckBox" name="chkBoxAutoResize">
+        <property name="text">
+         <string>Auto resize</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioBtnPan">
+        <property name="text">
+         <string>Pan</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">btnGroupDragMode</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioBtnZoom">
+        <property name="text">
+         <string>Zoom</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">btnGroupDragMode</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
       <item>
-       <widget class="QGraphicsView" name="graphicsView"/>
+       <widget class="PlotView" name="graphicsView"/>
       </item>
      </layout>
     </item>
@@ -90,7 +140,7 @@
      <x>0</x>
      <y>0</y>
      <width>843</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -105,6 +155,16 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>PlotView</class>
+   <extends>QGraphicsView</extends>
+   <header>plotview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="btnGroupDragMode"/>
+ </buttongroups>
 </ui>

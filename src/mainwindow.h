@@ -21,7 +21,6 @@ public:
 
 	void resizeEvent(QResizeEvent *event);
 	void showEvent(QShowEvent *event);
-	void fitContent();
 	void setColorButton(const QColor &color);
 
 private slots:
@@ -31,6 +30,10 @@ private slots:
 	void on_radiusSlider_sliderMoved(int position);
 
 	void on_btnColor_clicked();
+
+	void on_radioBtnZoom_clicked(bool checked);
+
+	void on_radioBtnPan_clicked(bool checked);
 
 private:
 	Ui::MainWindow *ui;

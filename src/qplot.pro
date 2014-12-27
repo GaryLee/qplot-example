@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    plotscene.cpp
+    plotscene.cpp \
+    plotview.cpp
 
 HEADERS  += mainwindow.h \
-    plotscene.h
+    plotscene.h \
+    plotview.h
 
 FORMS    += mainwindow.ui
